@@ -1,0 +1,20 @@
+<div class="container">
+  <p><%= notice %></p>
+
+  <div class="row">
+    <% @blogs.each do |blog| %>
+      <div class="col-xs-12 col-sm-offset-1 col-sm-5 col-md-offset-1 col-md-3 panel panel-success">
+        <div class="panel-heading">
+          <%= blog.title %>
+        </div>
+        <div class="panel-body">
+          <%= blog.content %></div>
+        <div class="blog-links">
+          <%= link_to '詳細', blog_path(blog.id), class: 'btn btn-default' %>
+          <%= link_to "編集", edit_blog_path(blog.id), class: 'btn btn-info', data: { confirm: '本当に編集していいですか？' } %>
+          <%= link_to '削除', blog_path(blog.id), method: :delete, data: { confirm: '本当に削除していいですか？' }, class: 'btn btn-danger' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

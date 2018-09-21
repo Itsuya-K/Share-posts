@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TwitterClone</title>
+    <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <ul>
+        <li class="left"><%= link_to 'トップページ', "/blogs/top" %></li>
+        <li class="left"><%= link_to 'ツイート一覧', blogs_path %></li>
+        <li class="right"><%= image_tag 'twitterclone_icon.png', :width => '60'%></li>
+        <li class="label label-danger right"><%= link_to 'ツイート', new_blog_path %></li>
+      </ul>
+    </header>
+
+<%= yield %>
+
+    <footer>
+      <p>PHASE2大課題</p>
+      <p>© 2018 TwitterClone</p>
+    </footer>
+
+  </body>
+</html>
