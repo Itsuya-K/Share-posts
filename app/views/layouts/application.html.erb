@@ -15,10 +15,25 @@
         <li class="left"><%= link_to 'ツイート一覧', blogs_path %></li>
         <li class="right"><%= image_tag 'twitterclone_icon.png', :width => '60'%></li>
         <li class="label label-danger right"><%= link_to 'ツイート', new_blog_path %></li>
+        <% if logged_in? %>
+          <!-- ログインしている場合 -->
+          <li class="label label-default right"><%= link_to "Profile", user_path(current_user.id) %></li>
+          <li class="label label-info right"><%= link_to "Logout", session_path(current_user.id), method: :delete %></li>
+        <% else %>
+          <!-- ログインしていない場合 -->
+          <li class="label label-default right"><%= link_to "Sign up", new_user_path %></li>
+          <li class="label label-info right"><%= link_to "Login", new_session_path %></li>
+        <% end %>
       </ul>
     </header>
 
-<%= yield %>
+    <% flash.each do |key, value| %>
+      <%= content_tag(:div, value, class: "#{key}") %>
+    <% end %>
+
+
+
+    <%= yield %>
 
     <footer>
       <p>PHASE2大課題</p>

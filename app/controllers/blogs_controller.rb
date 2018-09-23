@@ -1,5 +1,6 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
+  before_action :login_limit, only: [:new, :edit, :show, :destroy]
 
   def index
     @blogs = Blog.all
@@ -56,5 +57,12 @@ class BlogsController < ApplicationController
 
   def set_blog
     @blog = Blog.find(params[:id])
+  end
+
+  # current_userが存在していなければ、強制的にログイン画面にリダイレクトさせる
+  def login_limit
+    if logged_in? == false
+      redirect_to new_user_path, notice:"ログインしてください！"
+    end
   end
 end
