@@ -11,9 +11,11 @@
           <%= blog.content %></div>
         <div class="blog-links">
           <%= link_to '詳細', blog_path(blog.id), class: 'btn btn-default' %>
-          <% if blog.user_id == current_user.id%>
-            <%= link_to "編集", edit_blog_path(blog.id), class: 'btn btn-info', data: { confirm: '本当に編集していいですか？' } %>
-            <%= link_to '削除', blog_path(blog.id), method: :delete, data: { confirm: '本当に削除していいですか？' }, class: 'btn btn-danger' %>
+          <% if logged_in? %>
+            <% if blog.user_id == current_user.id%>
+              <%= link_to "編集", edit_blog_path(blog.id), class: 'btn btn-info', data: { confirm: '本当に編集していいですか？' } %>
+              <%= link_to '削除', blog_path(blog.id), method: :delete, data: { confirm: '本当に削除していいですか？' }, class: 'btn btn-danger' %>
+            <% end %>
           <% end %>
         </div>
       </div>
