@@ -16,6 +16,7 @@ class BlogsController < ApplicationController
 
   def create
     @blog = Blog.new(blog_params)
+    @blog.user_id = current_user.id #現在ログインしているuserのidをblogのuser_idカラムに挿入する。
     if @blog.save
       # 一覧画面へ遷移して"ブログを作成しました！"とメッセージを表示します。
       redirect_to blogs_path, notice: "ツイートしました！"
@@ -26,6 +27,7 @@ class BlogsController < ApplicationController
   end
 
   def show
+    @favorite = current_user.favorites.find_by(blog_id: @blog.id)
   end
 
   def edit
@@ -46,13 +48,15 @@ class BlogsController < ApplicationController
 
   def confirm
     @blog = Blog.new(blog_params)
+    @blog.user_id = current_user.id #現在ログインしているuserのidをblogのuser_idカラムに挿入する。
+    # binding.pry
     render :new if @blog.invalid?
   end
 
   private
 
   def blog_params
-    params.require(:blog).permit(:title, :content)
+    params.require(:blog).permit(:title, :content, :user_id)
   end
 
   def set_blog
@@ -62,7 +66,7 @@ class BlogsController < ApplicationController
   # current_userが存在していなければ、強制的にログイン画面にリダイレクトさせる
   def login_limit
     if logged_in? == false
-      redirect_to new_user_path, notice:"ログインしてください！"
+      redirect_to new_session_path, notice:"ログインしてください！"
     end
   end
 end
