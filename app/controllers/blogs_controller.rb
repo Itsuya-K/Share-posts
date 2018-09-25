@@ -1,6 +1,7 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
   before_action :login_limit, only: [:new, :edit, :show, :destroy]
+  before_action :set_limit, only: [:edit, :destroy]
 
   def index
     @blogs = Blog.all
@@ -67,6 +68,12 @@ class BlogsController < ApplicationController
   def login_limit
     if logged_in? == false
       redirect_to new_session_path, notice:"ログインしてください！"
+    end
+  end
+
+  def set_limit
+    unless current_user.id == @blog.user_id then
+      redirect_to blog_path, notice:"あなたはこのツイートを編集できません！"
     end
   end
 end

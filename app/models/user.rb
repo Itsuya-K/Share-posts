@@ -3,9 +3,9 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorite_blogs, through: :favorites, source: :blog
 
-  validates :name,  presence: true, length: { maximum: 30 }
+  validates :name,  presence: true, length: { maximum: 30 }, uniqueness: true
   validates :email, presence: true, length: { maximum: 255 },
-                    format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
+                    format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }, uniqueness: true
   before_validation { email.downcase! }
   # ユーザーの値がバリデーション判定される前にemail属性を強制的に小文字に変換
   has_secure_password
