@@ -8,6 +8,10 @@
           <%= blog.title %>
         </div>
         <div class="panel-body">
+          <p>
+            <strong>投稿者:</strong>
+            <%= blog.user.name %>
+          <p>
           <%= blog.content %></div>
           <%= image_tag blog.image %>
         <div class="blog-links">
