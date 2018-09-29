@@ -14,10 +14,15 @@
         <li class="left"><%= link_to 'トップページ', "/blogs/top" %></li>
         <li class="left"><%= link_to 'ツイート一覧', blogs_path %></li>
         <li class="left"><%= link_to 'メッセージ', new_contact_path %></li>
-        <li class="right"><%= image_tag 'twitterclone_icon.png', :width => '60'%></li>
-        <li class="label label-danger right"><%= link_to 'ツイート', new_blog_path %></li>
+
         <% if logged_in? %>
           <!-- ログインしている場合 -->
+          <% if @user.image %>
+            <li class="right"><%= image_tag @user.image, :size => "45x45" %></li>
+          <% else %>
+            <li class="right"><%= image_tag 'twitterclone_icon.png', :width => '60' %></li>
+          <% end %>
+          <li class="label label-danger right"><%= link_to 'ツイート', new_blog_path %></li>
           <li class="label label-default right"><%= link_to "Profile", user_path(current_user.id) %></li>
           <li class="label label-info right"><%= link_to "Logout", session_path(current_user.id), method: :delete %></li>
         <% else %>
@@ -27,15 +32,14 @@
         <% end %>
       </ul>
     </header>
+    <div class="container">
+      <% flash.each do |key, value| %>
+        <p><%= content_tag(:div, value, class: "#{key}") %></p>
+      <% end %>
 
-    <% flash.each do |key, value| %>
-      <p><%= content_tag(:div, value, class: "#{key}") %></p>
-    <% end %>
+      <%= yield %>
 
-
-
-    <%= yield %>
-
+    </div>
     <footer>
       <p>PHASE2大課題</p>
       <p>© 2018 TwitterClone</p>

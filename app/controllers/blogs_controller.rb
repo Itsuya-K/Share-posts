@@ -2,9 +2,11 @@ class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
   before_action :login_limit, only: [:new, :edit, :show, :destroy]
   before_action :set_limit, only: [:edit, :destroy]
+  # before_action :set_user
 
   def index
     @blogs = Blog.all
+    # @user = current_user
   end
 
   def new
@@ -58,12 +60,16 @@ class BlogsController < ApplicationController
   private
 
   def blog_params
-    params.require(:blog).permit(:title, :content, :user_id)
+    params.require(:blog).permit(:title, :content, :user_id, :image, :image_cache)
   end
 
   def set_blog
     @blog = Blog.find(params[:id])
   end
+
+  # def set_user
+  #   @user = current_user
+  # end
 
   # current_userが存在していなければ、強制的にログイン画面にリダイレクトさせる
   def login_limit

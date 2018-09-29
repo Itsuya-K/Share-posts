@@ -9,6 +9,7 @@
         </div>
         <div class="panel-body">
           <%= blog.content %></div>
+          <%= image_tag blog.image %>
         <div class="blog-links">
           <%= link_to '詳細', blog_path(blog.id), class: 'btn btn-default' %>
           <% if logged_in? %>

@@ -3,14 +3,17 @@
 <%= form_with(model: @blog, url: blogs_path, local: true) do |form| %>
   <%= form.hidden_field :title %>
   <%= form.hidden_field :content %>
+  <%= form.hidden_field :image_cache %>
 
   <p>タイトル:<%= @blog.title %></p>
   <p>本文:<%= @blog.content %></p>
-  <%= form.submit  "登録する" %>
+  <div class="margin"><%= image_tag(@blog.image) %></div>
+  <div class="margin"><%= form.submit  "登録する" %></div>
 <% end %>
 
 <%= form_with(model: @blog, url: new_blog_path, local: true, method: 'get') do |form| %>
   <%= form.hidden_field :title %>
   <%= form.hidden_field :content %>
+  <%= form.hidden_field :image_cache %>
   <%= form.submit "もどる", name: 'back' %>
 <% end %>

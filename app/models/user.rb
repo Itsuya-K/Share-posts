@@ -3,7 +3,7 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorite_blogs, through: :favorites, source: :blog
 
-  validates :name,  presence: true, length: { maximum: 30 }, uniqueness: true
+  validates :name,  presence: true, length: { maximum: 30 }
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }, uniqueness: true
   before_validation { email.downcase! }
@@ -14,4 +14,6 @@ class User < ApplicationRecord
   # authenticateメソッドが使えるようになる (引数の文字列がパスワードと一致するとUserオブジェクトを、間違っているとfalseを返すメソッド) 。
   # has_secure_passwordメソッドを使用するためにはpassword_digestというカラムが必要
   validates :password, presence: true, length: { minimum: 6 }
+
+  mount_uploader :image, ImageUploader
 end

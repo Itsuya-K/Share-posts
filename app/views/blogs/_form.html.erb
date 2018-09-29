@@ -11,14 +11,24 @@
 
 <%= form_with(model: @blog, local: true ,url: choose_new_or_edit ) do |form| %>
   <div class="blog_title">
-    <%= form.label :title%></br>
+    <%= form.label :title %></br>
     <%= form.text_field :title, class: "text" %>
   </div>
   <div class="blog_title">
     <%= form.label :content %></br>
-    <%= form.text_field :content, class: "text" %>
+    <%= form.text_area :content, class: "text" %>
   </div>
-  <%= form.submit%>
+  <div class="image">
+    <%= form.label :image %>
+    <!-- 確認画面から新規作成画面に戻った時に、 -->
+    <!-- アップロードした画像を表示させるための記述 -->
+    <%= image_tag(@blog.image.url) if @blog.image.url %>
+    <%= form.file_field :image, id: :blog_image %>
+    <!-- どのイメージか -->
+  </div>
+  <div class="actions margin">
+    <%= form.submit %>
+  </div>
 <% end %>
 
 <%= link_to "ブログ一覧画面にもどる", blogs_path %>
