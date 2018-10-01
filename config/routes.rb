@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :contacts
   get 'sessions/new'
 
-  get '/blogs/top', to: 'blogs#top'
+  get '/', to: 'blogs#top'
   resources :blogs do
     collection do
       post :confirm
