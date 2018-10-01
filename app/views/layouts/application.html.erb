@@ -23,12 +23,12 @@
             <li class="right"><%= image_tag 'twitterclone_icon.png', :width => '60' %></li>
           <% end %>
           <li class="label label-danger right"><%= link_to 'ツイート', new_blog_path %></li>
-          <li class="label label-default right"><%= link_to "Profile", user_path(current_user.id) %></li>
-          <li class="label label-info right"><%= link_to "Logout", session_path(current_user.id), method: :delete %></li>
+          <li class="label label-warning right"><%= link_to "プロフィール", user_path(current_user.id) %></li>
+          <li class="label label-success right"><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></li>
         <% else %>
           <!-- ログインしていない場合 -->
-          <li class="label label-default right"><%= link_to "Sign up", new_user_path %></li>
-          <li class="label label-info right"><%= link_to "Login", new_session_path %></li>
+          <li class="label label-warning right"><%= link_to "登録", new_user_path %></li>
+          <li class="label label-success right"><%= link_to "ログイン", new_session_path %></li>
         <% end %>
       </ul>
     </header>
@@ -41,7 +41,7 @@
 
     </div>
     <footer>
-      <p>PHASE2大課題</p>
+      <p>課題作成中</p>
       <p>© 2018 TwitterClone</p>
     </footer>
 

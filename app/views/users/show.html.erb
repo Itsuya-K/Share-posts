@@ -20,4 +20,7 @@
     </div>
   <% end %>
 </div>
+<% unless logged_in? %>
+  <%= link_to "ログイン", new_session_path, class: 'btn btn-default' %>
+<% end %>
 <%= link_to "ツイート一覧", blogs_path, class: 'btn btn-default' %>
