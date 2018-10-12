@@ -1,8 +1,19 @@
 <div class="container">
   <!-- <p><%= notice %></p> -->
   <div class="row">
-    <% @blogs.each do |blog| %>
-      <div class="col-xs-12 col-sm-offset-1 col-sm-5 col-md-offset-1 col-md-3 panel panel-success">
+    <% @blogs.each_with_index do |blog, i| %>
+      <% if i % 5 == 0 %>
+        <div class="col-xs-12 col-sm-offset-1 col-sm-5 col-md-offset-1 col-md-3 panel panel-success">
+      <% elsif i % 5 == 1 %>
+        <div class="col-xs-12 col-sm-offset-1 col-sm-5 col-md-offset-1 col-md-3 panel panel-warning">
+      <% elsif i % 5 == 2 %>
+        <div class="col-xs-12 col-sm-offset-1 col-sm-5 col-md-offset-1 col-md-3 panel panel-info">
+      <% elsif i % 5 == 3 %>
+        <div class="col-xs-12 col-sm-offset-1 col-sm-5 col-md-offset-1 col-md-3 panel panel-danger">
+      <% else %>
+        <div class="col-xs-12 col-sm-offset-1 col-sm-5 col-md-offset-1 col-md-3 panel panel-default">
+      <% end %>
+
         <div class="panel-heading">
           <%= blog.title %>
         </div>
