@@ -5,7 +5,7 @@ class BlogsController < ApplicationController
   # before_action :set_user
 
   def index
-    @blogs = Blog.all
+    @blogs = Blog.all.reverse_order
     # @user = current_user
   end
 

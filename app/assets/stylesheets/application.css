@@ -14,3 +14,6 @@
  *= require_tree .
  *= require_self
  */
+ body{
+   font-family: 'Hiragino Maru Gothic Pro';
+ }

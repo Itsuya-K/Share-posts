@@ -65,46 +65,39 @@ h1 {
   margin-bottom: 40px;
 }
 
+h1.title0 {
+  border: double 15px;/*線色*/
+  padding: 0.7em 1.5em;/*文字周りの余白*/
+  border-radius: 0.5em;/*角丸*/
+  font-weight:900;
+  display: inline-block;
+}
+
 h2 {
   margin: 40px;
 }
 
-li{
+li {
     list-style:none;
 }
 
-ul{
+ul {
     padding:0;
 }
 
-.header{
+.header {
     font-size:20px;
     font-weight:bold;
     text-align:center;
 }
 
-// .menu{
-//     background-color:#012F4B;
-//     color:#fff;
-// }
-//
-// .menu li {
-//     padding:5% 10%;
-//     text-align:center;
-// }
-//
-// .contents li{
-//     background-color:#F3A7AB;
-//     color:#fff;
-//     padding:10% 10%;
-//     box-sizing: border-box;
-//     border: solid 1px #fff;
-// }
-
-// .blog_title .text {
-//   width: 30%;
-//   margin-bottom: 50px;
-// }
+.title1 {
+  color: #ffffff;
+	background: #000000;
+  border-radius: 0.5em;
+	display: inline-block;
+	padding: 15px 30px;
+}
 
 .margin {
   margin: 20px;
@@ -112,4 +105,34 @@ ul{
 
 .blog-links .btn {
   margin-top: 10px;
+}
+
+.field {
+  margin: 30px;
+}
+
+input[type="text"],
+textarea {
+    padding: 0.8em;
+    outline: none;
+    border: 1px solid #DDD;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    font-size: 16px;
+}
+
+textarea {
+    width: 300px;
+}
+
+input[type="text"] {
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    transition: all .3s;
+    width: 200px;
+}
+
+input[type="text"]:focus {
+    width: 300px;
 }
