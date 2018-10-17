@@ -12,7 +12,7 @@
     <header>
       <ul>
         <li class="left"><%= link_to 'トップページ', "/" %></li>
-        <li class="left"><%= link_to 'ツイート一覧', blogs_path %></li>
+        <li class="left"><%= link_to '投稿一覧', blogs_path %></li>
         <li class="left"><%= link_to 'メッセージ', new_contact_path %></li>
 
         <% if logged_in? %>
@@ -22,7 +22,7 @@
           <% else %>
             <li class="right"><%= image_tag 'twitterclone_icon.png', :width => '60' %></li>
           <% end %>
-          <li class="label label-danger right"><%= link_to 'ツイート', new_blog_path %></li>
+          <li class="label label-danger right"><%= link_to '投稿', new_blog_path %></li>
           <li class="label label-warning right"><%= link_to "プロフィール", user_path(current_user.id) %></li>
           <li class="label label-success right"><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></li>
         <% else %>
