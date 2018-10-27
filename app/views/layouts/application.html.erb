@@ -18,7 +18,7 @@
         <% if logged_in? %>
           <!-- ログインしている場合 -->
           <% if @user.image %>
-            <li class="right"><%= image_tag @user.image, :size => "45x45" %></li>
+            <li class="right"><%= image_tag @user.image, class: "image" %></li>
           <% else %>
             <li class="right"><%= image_tag 'twitterclone_icon.png', :width => '60' %></li>
           <% end %>
